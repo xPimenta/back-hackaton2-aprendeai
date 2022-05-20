@@ -2,7 +2,7 @@ import dataBase from "../database.js";
 
 export async function getCategories(req, res){
     try{
-        const categories = await dataBase.collection("categories").find();
+        const categories = await dataBase.collection("categories").find().toArray();
         if(!categories){
             res.sendStatus(404);
             return;
@@ -21,7 +21,7 @@ export async function getQuestion(req, res){
    
     try{
         const questions = await dataBase.collection("questions").findOne({category: categ});
-        if(!card){
+        if(!questions){
             res.sendStatus(404);
             return;
         }
