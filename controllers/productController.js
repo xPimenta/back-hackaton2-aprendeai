@@ -16,8 +16,7 @@ export async function getCategories(req, res){
 }
 
 export async function getQuestion(req, res){
-    // Converting ID to be recognized by collection
-    const categ = req.params.categ;
+    const categ = "JS";
    
     try{
         const questions = await dataBase.collection("questions").findOne({category: categ});
