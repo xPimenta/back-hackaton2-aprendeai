@@ -3,7 +3,7 @@ import dataBase from "../database.js";
 export async function getCategories(req, res){
     try{
         const categories = await dataBase.collection("categories").find();
-        if(!products){
+        if(!categories){
             res.sendStatus(404);
             return;
         }
