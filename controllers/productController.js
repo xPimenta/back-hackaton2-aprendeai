@@ -1,8 +1,8 @@
 import dataBase from "../database.js";
 
-export async function getProducts(req, res){
+export async function getCategories(req, res){
     try{
-        const products = await dataBase.collection("products").find().toArray();
+        const products = await dataBase.collection("categories").find().toArray();
         if(!products){
             res.sendStatus(404);
             return;
@@ -15,12 +15,12 @@ export async function getProducts(req, res){
     }
 }
 
-export async function getCard(req, res){
+export async function getQuestion(req, res){
     // Converting ID to be recognized by collection
     const id = (req.params.id)
    
     try{
-        const card = await dataBase.collection("products").findOne({id:id});
+        const card = await dataBase.collection("categories").findOne({id:id});
         if(!card){
             res.sendStatus(404);
             return;
