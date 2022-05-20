@@ -16,10 +16,10 @@ export async function getCategories(req, res){
 }
 
 export async function getQuestion(req, res){
-    const categ = (req.params.categ);
+    const categ = "JS";
    
     try{
-        const questions = await dataBase.collection("questions").findOne({category: categ});
+        const questions = await dataBase.collection("questions").find({category: categ});
         if(!questions){
             res.sendStatus(404);
             return;
