@@ -16,7 +16,7 @@ export async function getCategories(req, res){
 }
 
 export async function getQuestion(req, res){
-    const categ = "JS";
+    const categ = (req.params.categ);
    
     try{
         const questions = await dataBase.collection("questions").findOne({category: categ});
