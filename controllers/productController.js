@@ -1,32 +1,32 @@
 import dataBase from "../database.js";
 
-export async function getCategories(req, res){
-    try{
-        const products = await dataBase.collection("categories").find().toArray();
-        if(!products){
-            res.sendStatus(404);
-            return;
-        }
+// export async function getCategories(req, res){
+//     try{
+//         const products = await dataBase.collection("categories").find().toArray();
+//         if(!products){
+//             res.sendStatus(404);
+//             return;
+//         }
 
-        res.send(products);
-    }
-    catch(e){
-        res.sendStatus(500);
-    }
-}
+//         res.send(products);
+//     }
+//     catch(e){
+//         res.sendStatus(500);
+//     }
+// }
 
 export async function getQuestion(req, res){
     // Converting ID to be recognized by collection
-    const id = (req.params.id)
+    const categ = "JS"
    
     try{
-        const card = await dataBase.collection("categories").findOne({id:id});
+        const questions = await dataBase.collection("questions").find({category: categ});
         if(!card){
             res.sendStatus(404);
             return;
         }
 
-        res.send(card);
+        res.send(questions);
     }
     catch(e){
         res.sendStatus(500);
