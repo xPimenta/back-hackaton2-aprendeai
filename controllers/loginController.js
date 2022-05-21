@@ -2,7 +2,7 @@ import dataBase from "../database.js";
 import joi from "joi"
 import bcrypt from "bcrypt"
 import { v4 as uuid } from 'uuid';
-//signUP OK commit
+//signUP and SignIN OK!
 
 export async function postSignUp(req, res) {
   // validate req.body obj
