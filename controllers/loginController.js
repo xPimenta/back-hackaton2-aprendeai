@@ -10,9 +10,6 @@ export async function postSignUp(req, res) {
     email: joi.string().email().required(),
     password: joi.string().min(6).required(),
     confirmPassword: joi.string().valid(joi.ref("password")).required(),
-    address: joi.string().required(),
-    number: joi.number().required(),
-    complement: joi.string(),
   })
   const validation = authSchema.validate(req.body, { abortEarly: false })
   if (validation.error) {
