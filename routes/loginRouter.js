@@ -1,5 +1,4 @@
 import { Router } from "express"
-
 import { postSignUp, postSignIn } from "../controllers/loginController.js"
 
 const loginRouter = Router()
