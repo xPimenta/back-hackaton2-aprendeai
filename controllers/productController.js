@@ -25,8 +25,9 @@ export async function getQuestion(req, res){
             return;
         }
 
-        questions.delete({correctAnswer});
-
+        questions.forEach(question => {
+            delete question.correctAnswer;
+        });
         res.send(questions);
     }
     catch(e){
