@@ -25,6 +25,8 @@ export async function getQuestion(req, res){
             return;
         }
 
+        questions.delete({correctAnswer});
+
         res.send(questions);
     }
     catch(e){
