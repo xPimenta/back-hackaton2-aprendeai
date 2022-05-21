@@ -19,7 +19,7 @@ export async function getQuestion(req, res){
     const categ = (req.params.categ);
    
     try{
-        const questions = await dataBase.collection("questions").find({category: categ}).toArray();
+        const questions = await dataBase.collection("questions").find({category: categ});
         if(!questions){
             res.sendStatus(404);
             return;
