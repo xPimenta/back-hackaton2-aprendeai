@@ -20,13 +20,13 @@ export async function postSignUp(req, res) {
 
   try {
     // check if email already exists
-    const existEmail = await db.collection("users").findOne({ email: req.body.email })
+    const existEmail = await dataBase.collection("users").findOne({ email: req.body.email })
     if (existEmail) {
       return res.sendStatus(409)
     }
 
     // create new document in collection
-    await db.collection("users").insertOne({
+    await dataBase.collection("users").insertOne({
       ...req.body,
       password: bcrypt.hashSync(req.body.password, 10),
     })
@@ -45,7 +45,7 @@ export async function postSignIn (req,res) {
 
   const { body } = req;
   try {
-    const user = await db.collection('users').findOne({email: body.email});
+    const user = await dataBase.collection('users').findOne({email: body.email});
 
     const validation = authSchema.validate(req.body, { abortEarly: false })
     if (validation.error) {
@@ -54,7 +54,7 @@ export async function postSignIn (req,res) {
 
     if(bcrypt.compareSync(body.password, user.password)){
       const token = uuid();
-      const session = await db.collection('sessions').findOne({'user_id': user._id});
+      const session = await dataBase.collection('sessions').findOne({'user_id': user._id});
       if(session){
           res.status(200).send({'user_id': session.user_id, 'token': session.token});
           return;
