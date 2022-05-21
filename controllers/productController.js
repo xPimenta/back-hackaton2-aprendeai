@@ -28,6 +28,7 @@ export async function getQuestion(req, res){
         questions.forEach(question => {
             delete question.correctAnswer;
         });
+        
         res.send(questions);
     }
     catch(e){
@@ -35,3 +36,4 @@ export async function getQuestion(req, res){
         console.log(e);
     }
 }
+
