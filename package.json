@@ -22,5 +22,13 @@
     "joi": "^17.6.0",
     "mongodb": "^4.5.0",
     "uuid": "^8.3.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xPimenta/back-hackaton2-aprendeai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xPimenta/back-hackaton2-aprendeai/issues"
+  },
+  "homepage": "https://github.com/xPimenta/back-hackaton2-aprendeai#readme"
 }
