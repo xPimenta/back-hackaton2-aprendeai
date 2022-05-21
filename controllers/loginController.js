@@ -60,7 +60,7 @@ export async function postSignIn (req,res) {
           res.status(200).send({'user_id': session.user_id, 'token': session.token});
           return;
       }else{
-          await db.collection("sessions").insertOne({'user_id': user._id, 'token': token});
+          await dataBase.collection("sessions").insertOne({'user_id': user._id, 'token': token});
           res.status(200).send({'user_id': user._id, 'token': token});
           return;
       }
