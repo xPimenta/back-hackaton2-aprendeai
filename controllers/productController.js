@@ -37,3 +37,22 @@ export async function getQuestion(req, res){
     }
 }
 
+export async function postAnswer(req, res){
+    const { answer } = req.body;
+   
+    try{
+        const correctAnswer = await dataBase.collection("questions").findOne({question: answer.question}).toArray();
+        const isCorrect = correctAnswer.correctAnswer === answer.answer;
+        if(!isCorrect){
+            res.send({isCorrect: false});
+            return;
+        }
+        
+        res.send({isCorrect: true});
+    }
+    catch(e){
+        res.sendStatus(500);
+        console.log(e);
+    }
+}
+
